@@ -1,0 +1,37 @@
+<%- include('../includes/start.ejs') %>
+</head>
+<%- include('../includes/header.ejs') %>
+<body>
+    <main>
+        <div class="aboveCart">
+<h1>Dear, <%=userName%>, this are all your orders</h1>            
+            <h2>$<%=totalPriceForAllOrders%> total for all orders</h2>
+        </div>
+        <hr>
+        <% if (orders.length > 0) { %>
+        <div class="ordersContainer">
+          <% orders.forEach((order, index) => {%>
+            <div class="orderItem">
+            <h1>This is your order #<%=index + 1%></h1>
+            <h3>Total for this order: $<%=order.totalOrderPrice%></h3>
+            <%order.items.forEach(itemInOrder => {%>
+          <article class="card product-item">
+            <header class="card__header">
+              <h1 class="product__title"><%= itemInOrder.title %></h1>
+            </header>
+            <div class="card__content">
+              <h2 class="product__price">$<%= itemInOrder.price%></h2>
+              <p class="product__description">
+                <%= itemInOrder.quantity %>
+              </p>
+            </div>
+          </article>
+          <%})%>
+        </div>
+          <% }) %>
+        </div>
+        <% } else { %> 
+          <h1>No orders made yet :(</h1>
+          <%} %>
+      </main>
+<%- include('../includes/end.ejs')%>

@@ -1,0 +1,34 @@
+<%- include('../includes/start.ejs') %>
+    <link rel="stylesheet" href="/css/product.css" />
+  </head>
+
+  <body>
+    <%- include('../includes/header.ejs') %>
+    <main>
+      <div class="grid">
+        <article class="card product-item">
+          <header class="card__header">
+            <h1 class="product__title"><%= prod.title %></h1>
+          </header>
+          <div class="card__image">
+            <img
+              src="<%= prod.imageUrl%>"
+              alt="<%= prod.imageUrl%>"
+            />
+          </div>
+          <div class="card__content">
+            <h2 class="product__price">$<%= prod.price%></h2>
+            <p class="product__description">
+              <%= prod.description %>
+            </p>
+          </div>
+          <div class="card__actions" style="display: flex; flex-direction: column;">
+            <a href="/" class="btn" style="margin-bottom: 1rem;">Go to all products</a>
+            <div>
+              <%- include('../includes/add-to-cart.ejs') %>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+<%- include('../includes/end.ejs') %>
